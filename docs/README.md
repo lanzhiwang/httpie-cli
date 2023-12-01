@@ -9,35 +9,63 @@ Its goal is to make CLI interaction with web services as human-friendly as possi
 HTTPie is designed for testing, debugging, and generally interacting with APIs & HTTP servers.
 The `http` & `https` commands allow for creating and sending arbitrary HTTP requests.
 They use simple and natural syntax and provide formatted and colorized output.
+HTTPie（发音为 aitch-tee-tee-pie）是一个命令行 HTTP 客户端。 其目标是使 CLI 与 Web 服务的交互尽可能人性化。 HTTPie 设计用于测试、调试以及与 API 和 HTTP 服务器的一般交互。 http 和 https 命令允许创建和发送任意 HTTP 请求。 它们使用简单自然的语法，并提供格式化和彩色的输出。
 
 <div class='hidden-website'>
 
 ## About this document
 
 This documentation is best viewed at [httpie.io/docs](https://httpie.org/docs).
+最好在 httpie.io/docs 上查看此文档。
 
 You can select your corresponding HTTPie version as well as run examples directly from the browser using a [termible.io](https://termible.io?utm_source=httpie-readme) embedded terminal.
+您可以选择相应的 HTTPie 版本，并使用 termible.io 嵌入式终端直接从浏览器运行示例。
 
 If you are reading this on GitHub, then this text covers the current *development* version.
 You are invited to submit fixes and improvements to the docs by editing [this file](https://github.com/httpie/httpie/blob/master/docs/README.md).
+如果您在 GitHub 上阅读本文，那么本文涵盖了当前的开发版本。
+邀请您通过编辑此文件来提交对文档的修复和改进。
 
 </div>
 
 ## Main features
 
 - Expressive and intuitive syntax
+  富有表现力且直观的语法
+
 - Formatted and colorized terminal output
+  格式化和着色的终端输出
+
 - Built-in JSON support
+  内置 JSON 支持
+
 - Forms and file uploads
+  表格和文件上传
+
 - HTTPS, proxies, and authentication
+  HTTPS、代理和身份验证
+
 - Arbitrary request data
+  任意请求数据
+
 - Custom headers
+  自定义标头
+
 - Persistent sessions
+  持续会话
+
 - Wget-like downloads
+  类似 wget 的下载
+
 - Linux, macOS, Windows, and FreeBSD support
+  Linux、macOS、Windows 和 FreeBSD 支持
+
 - Plugins
+
 - Documentation
+
 - Test coverage
+  测试覆盖率
 
 ## Installation
 
@@ -288,7 +316,735 @@ Note that on your machine, the version name will have the `.dev0` suffix.
 Hello World:
 
 ```bash
+$ pip show -f httpie
+Name: httpie
+Version: 3.2.2
+Summary: HTTPie: modern, user-friendly command-line HTTP client for the API era.
+Home-page: https://httpie.io/
+Author: Jakub Roztocil
+Author-email: jakub@roztocil.co
+License: BSD
+Location: /usr/local/lib/python3.9/site-packages
+Requires: charset-normalizer, defusedxml, multidict, pip, Pygments, requests, requests-toolbelt, rich, setuptools
+Required-by:
+Files:
+  ../../../bin/http
+  ../../../bin/httpie
+  ../../../bin/https
+  ../../../share/man/man1/http.1
+  ../../../share/man/man1/httpie.1
+  ../../../share/man/man1/https.1
+  httpie-3.2.2.dist-info/AUTHORS.md
+  httpie-3.2.2.dist-info/INSTALLER
+  httpie-3.2.2.dist-info/LICENSE
+  httpie-3.2.2.dist-info/METADATA
+  httpie-3.2.2.dist-info/RECORD
+  httpie-3.2.2.dist-info/REQUESTED
+  httpie-3.2.2.dist-info/WHEEL
+  httpie-3.2.2.dist-info/entry_points.txt
+  httpie-3.2.2.dist-info/top_level.txt
+  httpie/__init__.py
+  httpie/__main__.py
+  httpie/__pycache__/__init__.cpython-39.pyc
+  httpie/__pycache__/__main__.cpython-39.pyc
+  httpie/__pycache__/adapters.cpython-39.pyc
+  httpie/__pycache__/client.cpython-39.pyc
+  httpie/__pycache__/compat.cpython-39.pyc
+  httpie/__pycache__/config.cpython-39.pyc
+  httpie/__pycache__/context.cpython-39.pyc
+  httpie/__pycache__/cookies.cpython-39.pyc
+  httpie/__pycache__/core.cpython-39.pyc
+  httpie/__pycache__/downloads.cpython-39.pyc
+  httpie/__pycache__/encoding.cpython-39.pyc
+  httpie/__pycache__/models.cpython-39.pyc
+  httpie/__pycache__/sessions.cpython-39.pyc
+  httpie/__pycache__/ssl_.cpython-39.pyc
+  httpie/__pycache__/status.cpython-39.pyc
+  httpie/__pycache__/uploads.cpython-39.pyc
+  httpie/__pycache__/utils.cpython-39.pyc
+  httpie/adapters.py
+  httpie/cli/__init__.py
+  httpie/cli/__pycache__/__init__.cpython-39.pyc
+  httpie/cli/__pycache__/argparser.cpython-39.pyc
+  httpie/cli/__pycache__/argtypes.cpython-39.pyc
+  httpie/cli/__pycache__/constants.cpython-39.pyc
+  httpie/cli/__pycache__/definition.cpython-39.pyc
+  httpie/cli/__pycache__/dicts.cpython-39.pyc
+  httpie/cli/__pycache__/exceptions.cpython-39.pyc
+  httpie/cli/__pycache__/options.cpython-39.pyc
+  httpie/cli/__pycache__/requestitems.cpython-39.pyc
+  httpie/cli/__pycache__/utils.cpython-39.pyc
+  httpie/cli/argparser.py
+  httpie/cli/argtypes.py
+  httpie/cli/constants.py
+  httpie/cli/definition.py
+  httpie/cli/dicts.py
+  httpie/cli/exceptions.py
+  httpie/cli/nested_json/__init__.py
+  httpie/cli/nested_json/__pycache__/__init__.cpython-39.pyc
+  httpie/cli/nested_json/__pycache__/errors.cpython-39.pyc
+  httpie/cli/nested_json/__pycache__/interpret.cpython-39.pyc
+  httpie/cli/nested_json/__pycache__/parse.cpython-39.pyc
+  httpie/cli/nested_json/__pycache__/tokens.cpython-39.pyc
+  httpie/cli/nested_json/errors.py
+  httpie/cli/nested_json/interpret.py
+  httpie/cli/nested_json/parse.py
+  httpie/cli/nested_json/tokens.py
+  httpie/cli/options.py
+  httpie/cli/requestitems.py
+  httpie/cli/utils.py
+  httpie/client.py
+  httpie/compat.py
+  httpie/config.py
+  httpie/context.py
+  httpie/cookies.py
+  httpie/core.py
+  httpie/downloads.py
+  httpie/encoding.py
+  httpie/internal/__build_channel__.py
+  httpie/internal/__init__.py
+  httpie/internal/__pycache__/__build_channel__.cpython-39.pyc
+  httpie/internal/__pycache__/__init__.cpython-39.pyc
+  httpie/internal/__pycache__/daemon_runner.cpython-39.pyc
+  httpie/internal/__pycache__/daemons.cpython-39.pyc
+  httpie/internal/__pycache__/update_warnings.cpython-39.pyc
+  httpie/internal/daemon_runner.py
+  httpie/internal/daemons.py
+  httpie/internal/update_warnings.py
+  httpie/legacy/__init__.py
+  httpie/legacy/__pycache__/__init__.cpython-39.pyc
+  httpie/legacy/__pycache__/v3_1_0_session_cookie_format.cpython-39.pyc
+  httpie/legacy/__pycache__/v3_2_0_session_header_format.cpython-39.pyc
+  httpie/legacy/v3_1_0_session_cookie_format.py
+  httpie/legacy/v3_2_0_session_header_format.py
+  httpie/manager/__init__.py
+  httpie/manager/__main__.py
+  httpie/manager/__pycache__/__init__.cpython-39.pyc
+  httpie/manager/__pycache__/__main__.cpython-39.pyc
+  httpie/manager/__pycache__/cli.cpython-39.pyc
+  httpie/manager/__pycache__/compat.cpython-39.pyc
+  httpie/manager/__pycache__/core.cpython-39.pyc
+  httpie/manager/cli.py
+  httpie/manager/compat.py
+  httpie/manager/core.py
+  httpie/manager/tasks/__init__.py
+  httpie/manager/tasks/__pycache__/__init__.cpython-39.pyc
+  httpie/manager/tasks/__pycache__/check_updates.cpython-39.pyc
+  httpie/manager/tasks/__pycache__/export_args.cpython-39.pyc
+  httpie/manager/tasks/__pycache__/plugins.cpython-39.pyc
+  httpie/manager/tasks/__pycache__/sessions.cpython-39.pyc
+  httpie/manager/tasks/check_updates.py
+  httpie/manager/tasks/export_args.py
+  httpie/manager/tasks/plugins.py
+  httpie/manager/tasks/sessions.py
+  httpie/models.py
+  httpie/output/__init__.py
+  httpie/output/__pycache__/__init__.cpython-39.pyc
+  httpie/output/__pycache__/models.cpython-39.pyc
+  httpie/output/__pycache__/processing.cpython-39.pyc
+  httpie/output/__pycache__/streams.cpython-39.pyc
+  httpie/output/__pycache__/utils.cpython-39.pyc
+  httpie/output/__pycache__/writer.cpython-39.pyc
+  httpie/output/formatters/__init__.py
+  httpie/output/formatters/__pycache__/__init__.cpython-39.pyc
+  httpie/output/formatters/__pycache__/colors.cpython-39.pyc
+  httpie/output/formatters/__pycache__/headers.cpython-39.pyc
+  httpie/output/formatters/__pycache__/json.cpython-39.pyc
+  httpie/output/formatters/__pycache__/xml.cpython-39.pyc
+  httpie/output/formatters/colors.py
+  httpie/output/formatters/headers.py
+  httpie/output/formatters/json.py
+  httpie/output/formatters/xml.py
+  httpie/output/lexers/__init__.py
+  httpie/output/lexers/__pycache__/__init__.cpython-39.pyc
+  httpie/output/lexers/__pycache__/common.cpython-39.pyc
+  httpie/output/lexers/__pycache__/http.cpython-39.pyc
+  httpie/output/lexers/__pycache__/json.cpython-39.pyc
+  httpie/output/lexers/__pycache__/metadata.cpython-39.pyc
+  httpie/output/lexers/common.py
+  httpie/output/lexers/http.py
+  httpie/output/lexers/json.py
+  httpie/output/lexers/metadata.py
+  httpie/output/models.py
+  httpie/output/processing.py
+  httpie/output/streams.py
+  httpie/output/ui/__init__.py
+  httpie/output/ui/__pycache__/__init__.cpython-39.pyc
+  httpie/output/ui/__pycache__/man_pages.cpython-39.pyc
+  httpie/output/ui/__pycache__/palette.cpython-39.pyc
+  httpie/output/ui/__pycache__/rich_help.cpython-39.pyc
+  httpie/output/ui/__pycache__/rich_palette.cpython-39.pyc
+  httpie/output/ui/__pycache__/rich_progress.cpython-39.pyc
+  httpie/output/ui/__pycache__/rich_utils.cpython-39.pyc
+  httpie/output/ui/man_pages.py
+  httpie/output/ui/palette.py
+  httpie/output/ui/rich_help.py
+  httpie/output/ui/rich_palette.py
+  httpie/output/ui/rich_progress.py
+  httpie/output/ui/rich_utils.py
+  httpie/output/utils.py
+  httpie/output/writer.py
+  httpie/plugins/__init__.py
+  httpie/plugins/__pycache__/__init__.cpython-39.pyc
+  httpie/plugins/__pycache__/base.cpython-39.pyc
+  httpie/plugins/__pycache__/builtin.cpython-39.pyc
+  httpie/plugins/__pycache__/manager.cpython-39.pyc
+  httpie/plugins/__pycache__/registry.cpython-39.pyc
+  httpie/plugins/base.py
+  httpie/plugins/builtin.py
+  httpie/plugins/manager.py
+  httpie/plugins/registry.py
+  httpie/sessions.py
+  httpie/ssl_.py
+  httpie/status.py
+  httpie/uploads.py
+  httpie/utils.py
+$
+
+
+$ http --help
+usage:
+    http [METHOD] URL [REQUEST_ITEM ...]
+
+HTTPie: modern, user-friendly command-line HTTP client for the API era. <https://httpie.io>
+HTTPie：API 时代的现代、用户友好的命令行 HTTP 客户端。
+
+Positional arguments:
+位置参数：
+
+  These arguments come after any flags and in the order they are listed here.
+  Only URL is required.
+  这些参数位于任何标志之后，并按照它们在此处列出的顺序排列。
+  仅需要 URL。
+
+  METHOD
+      The HTTP method to be used for the request (GET, POST, PUT, DELETE, ...).
+      用于请求的 HTTP 方法（GET、POST、PUT、DELETE...）。
+
+      This argument can be omitted in which case HTTPie will use POST if there
+      is some data to be sent, otherwise GET:
+      该参数可以省略，在这种情况下，HTTPie 将使用 POST（如果存在）
+      是要发送的一些数据，否则 GET：
+
+          $ http example.org               # => GET
+          $ http example.org hello=world   # => POST
+
+  URL
+      The request URL. Scheme defaults to 'http://' if the URL
+      does not include one. (You can override this with: --default-scheme=http/https)
+      请求网址。 如果 URL 则方案默认为“http://”
+      不包括一项。 （您可以使用以下命令覆盖此设置：--default-scheme=http/https）
+
+      You can also use a shorthand for localhost
+
+          $ http :3000                    # => http://localhost:3000
+          $ http :/foo                    # => http://localhost/foo
+
+  REQUEST_ITEM
+      Optional key-value pairs to be included in the request. The separator used
+      determines the type:
+      要包含在请求中的可选键值对。 使用的分离器
+      确定类型：
+
+      ':' HTTP headers:
+
+          Referer:https://httpie.io  Cookie:foo=bar  User-Agent:bacon/1.0
+
+      '==' URL parameters to be appended to the request URI:
+
+          search==httpie
+
+      '=' Data fields to be serialized into a JSON object (with --json, -j)
+          or form data (with --form, -f):
+
+          name=HTTPie  language=Python  description='CLI HTTP client'
+
+      ':=' Non-string JSON data fields (only with --json, -j):
+
+          awesome:=true  amount:=42  colors:='["red", "green", "blue"]'
+
+      '@' Form file fields (only with --form or --multipart):
+
+          cv@~/Documents/CV.pdf
+          cv@'~/Documents/CV.pdf;type=application/pdf'
+
+      '=@' A data field like '=', but takes a file path and embeds its content:
+
+          essay=@Documents/essay.txt
+
+      ':=@' A raw JSON field like ':=', but takes a file path and embeds its content:
+
+          package:=@./package.json
+
+      You can use a backslash to escape a colliding separator in the field name:
+
+          field-name-with\:colon=value
+
+
+Predefined content types:
+
+  --json, -j
+      (default) Data items from the command line are serialized as a JSON object.
+      The Content-Type and Accept headers are set to application/json
+      (if not specified).
+
+  --form, -f
+      Data items from the command line are serialized as form fields.
+
+      The Content-Type is set to application/x-www-form-urlencoded (if not
+      specified). The presence of any file fields results in a
+      multipart/form-data request.
+
+  --multipart
+      Similar to --form, but always sends a multipart/form-data request (i.e., even without files).
+
+  --boundary BOUNDARY
+      Specify a custom boundary string for multipart/form-data requests. Only has effect only together with --form.
+
+  --raw RAW
+      This option allows you to pass raw request data without extra processing
+      (as opposed to the structured request items syntax):
+
+          $ http --raw='data' pie.dev/post
+
+      You can achieve the same by piping the data via stdin:
+
+          $ echo data | http pie.dev/post
+
+      Or have HTTPie load the raw data from a file:
+
+          $ http pie.dev/post @data.txt
+
+
+Content processing options:
+
+  --compress, -x
+      Content compressed (encoded) with Deflate algorithm.
+      The Content-Encoding header is set to deflate.
+
+      Compression is skipped if it appears that compression ratio is
+      negative. Compression can be forced by repeating the argument.
+
+
+Output processing:
+
+  --pretty {all,colors,format,none}
+      Controls output processing. The value can be "none" to not prettify
+      the output (default for redirected output), "all" to apply both colors
+      and formatting (default for terminal output), "colors", or "format".
+
+  --style STYLE, -s STYLE
+      Output coloring style (default is "auto"). It can be one of:
+
+              abap, algol, algol_nu, arduino, auto, autumn, borland, bw,
+          colorful, default, dracula, emacs, friendly,
+          friendly_grayscale, fruity, github-dark, gruvbox-dark,
+          gruvbox-light, igor, inkpot, lightbulb, lilypond, lovelace,
+          manni, material, monokai, murphy, native, nord, nord-darker,
+          one-dark, paraiso-dark, paraiso-light, pastie, perldoc, pie,
+          pie-dark, pie-light, rainbow_dash, rrt, sas, solarized,
+          solarized-dark, solarized-light, staroffice, stata-dark,
+          stata-light, tango, trac, vim, vs, xcode, zenburn
+
+      The "auto" style follows your terminal's ANSI color styles.
+      For non-auto styles to work properly, please make sure that the
+      $TERM environment variable is set to "xterm-256color" or similar
+      (e.g., via `export TERM=xterm-256color' in your ~/.bashrc).
+
+  --unsorted
+      Disables all sorting while formatting output. It is a shortcut for:
+
+          --format-options=headers.sort:false,json.sort_keys:false
+
+  --sorted
+      Re-enables all sorting options while formatting output. It is a shortcut for:
+
+          --format-options=headers.sort:true,json.sort_keys:true
+
+  --response-charset ENCODING
+      Override the response encoding for terminal display purposes, e.g.:
+
+          --response-charset=utf8
+          --response-charset=big5
+
+  --response-mime MIME_TYPE
+      Override the response mime type for coloring and formatting for the terminal, e.g.:
+
+          --response-mime=application/json
+          --response-mime=text/xml
+
+  --format-options FORMAT_OPTIONS
+      Controls output formatting. Only relevant when formatting is enabled
+      through (explicit or implied) --pretty=all or --pretty=format.
+      The following are the default options:
+
+          headers.sort:true
+          json.format:true
+          json.indent:4
+          json.sort_keys:true
+          xml.format:true
+          xml.indent:2
+
+      You may use this option multiple times, as well as specify multiple
+      comma-separated options at the same time. For example, this modifies the
+      settings to disable the sorting of JSON keys, and sets the indent size to 2:
+
+          --format-options json.sort_keys:false,json.indent:2
+
+      This is something you will typically put into your config file.
+
+
+Output options:
+
+  --print WHAT, -p WHAT
+      String specifying what the output should contain:
+
+          'H' request headers
+          'B' request body
+          'h' response headers
+          'b' response body
+          'm' response metadata
+
+      The default behaviour is 'hb' (i.e., the response
+      headers and body is printed), if standard output is not redirected.
+      If the output is piped to another program or to a file, then only the
+      response body is printed by default.
+
+  --headers, -h
+      Print only the response headers. Shortcut for --print=h.
+
+  --meta, -m
+      Print only the response metadata. Shortcut for --print=m.
+
+  --body, -b
+      Print only the response body. Shortcut for --print=b.
+
+  --verbose, -v
+      Verbose output. For the level one (with single `-v`/`--verbose`), print
+      the whole request as well as the response. Also print any intermediary
+      requests/responses (such as redirects). For the second level and higher,
+      print these as well as the response metadata.
+
+      Level one is a shortcut for: --all --print=BHbh
+      Level two is a shortcut for: --all --print=BHbhm
+
+  --all
+      By default, only the final request/response is shown. Use this flag to show
+      any intermediary requests/responses as well. Intermediary requests include
+      followed redirects (with --follow), the first unauthorized request when
+      Digest auth is used (--auth=digest), etc.
+
+  --stream, -S
+      Always stream the response body by line, i.e., behave like `tail -f'.
+
+      Without --stream and with --pretty (either set or implied),
+      HTTPie fetches the whole response before it outputs the processed data.
+
+      Set this option when you want to continuously display a prettified
+      long-lived response, such as one from the Twitter streaming API.
+
+      It is useful also without --pretty: It ensures that the output is flushed
+      more often and in smaller chunks.
+
+  --output FILE, -o FILE
+      Save output to FILE instead of stdout. If --download is also set, then only
+      the response body is saved to FILE. Other parts of the HTTP exchange are
+      printed to stderr.
+
+  --download, -d
+      Do not print the response body to stdout. Rather, download it and store it
+      in a file. The filename is guessed unless specified with --output
+      [filename]. This action is similar to the default behaviour of wget.
+
+  --continue, -c
+      Resume an interrupted download. Note that the --output option needs to be
+      specified as well.
+
+  --quiet, -q
+      Do not print to stdout or stderr, except for errors and warnings when provided once.
+      Provide twice to suppress warnings as well.
+      stdout is still redirected if --output is specified.
+      Flag doesn't affect behaviour of download beyond not printing to terminal.
+
+
+Sessions:
+
+  --session SESSION_NAME_OR_PATH
+      Create, or reuse and update a session. Within a session, custom headers,
+      auth credential, as well as any cookies sent by the server persist between
+      requests.
+
+      Session files are stored in:
+
+          [HTTPIE_CONFIG_DIR]/<HOST>/<SESSION_NAME>.json.
+
+      See the following page to find out your default HTTPIE_CONFIG_DIR:
+
+          https://httpie.io/docs/cli/config-file-directory
+
+  --session-read-only SESSION_NAME_OR_PATH
+      Create or read a session without updating it form the request/response
+      exchange.
+
+
+Authentication:
+
+  --auth USER[:PASS] | TOKEN, -a USER[:PASS] | TOKEN
+      For username/password based authentication mechanisms (e.g
+      basic auth or digest auth) if only the username is provided
+      (-a username), HTTPie will prompt for the password.
+
+  --auth-type {basic,bearer,digest}, -A {basic,bearer,digest}
+      The authentication mechanism to be used. Defaults to "basic".
+
+      "basic": Basic HTTP auth
+
+      "digest": Digest HTTP auth
+
+      "bearer": Bearer HTTP Auth
+
+  --ignore-netrc
+      Ignore credentials from .netrc.
+
+
+Network:
+
+  --offline
+      Build the request and print it but don’t actually send it.
+
+  --proxy PROTOCOL:PROXY_URL
+      String mapping protocol to the URL of the proxy
+      (e.g. http:http://foo.bar:3128). You can specify multiple proxies with
+      different protocols. The environment variables $ALL_PROXY, $HTTP_PROXY,
+      and $HTTPS_proxy are supported as well.
+
+  --follow, -F
+      Follow 30x Location redirects.
+
+  --max-redirects MAX_REDIRECTS
+      By default, requests have a limit of 30 redirects (works with --follow).
+
+  --max-headers MAX_HEADERS
+      The maximum number of response headers to be read before giving up (default 0, i.e., no limit).
+
+  --timeout SECONDS
+      The connection timeout of the request in seconds.
+      The default value is 0, i.e., there is no timeout limit.
+      This is not a time limit on the entire response download;
+      rather, an error is reported if the server has not issued a response for
+      timeout seconds (more precisely, if no bytes have been received on
+      the underlying socket for timeout seconds).
+
+  --check-status
+      By default, HTTPie exits with 0 when no network or other fatal errors
+      occur. This flag instructs HTTPie to also check the HTTP status code and
+      exit with an error if the status indicates one.
+
+      When the server replies with a 4xx (Client Error) or 5xx (Server Error)
+      status code, HTTPie exits with 4 or 5 respectively. If the response is a
+      3xx (Redirect) and --follow hasn't been set, then the exit status is 3.
+      Also an error message is written to stderr if stdout is redirected.
+
+  --path-as-is
+      Bypass dot segment (/../ or /./) URL squashing.
+
+  --chunked
+      Enable streaming via chunked transfer encoding. The Transfer-Encoding header is set to chunked.
+
+
+SSL:
+
+  --verify VERIFY
+      Set to "no" (or "false") to skip checking the host's SSL certificate.
+      Defaults to "yes" ("true"). You can also pass the path to a CA_BUNDLE file
+      for private certs. (Or you can set the REQUESTS_CA_BUNDLE environment
+      variable instead.)
+
+  --ssl {ssl2.3,tls1,tls1.1,tls1.2}
+      The desired protocol version to use. This will default to
+      SSL v2.3 which will negotiate the highest protocol that both
+      the server and your installation of OpenSSL support. Available protocols
+      may vary depending on OpenSSL installation (only the supported ones
+      are shown here).
+
+  --ciphers CIPHERS
+      A string in the OpenSSL cipher list format. By default, the following
+      ciphers are used on your system:
+
+      TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:DHE-RSA-AES256-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA
+
+  --cert CERT
+      You can specify a local cert to use as client side SSL certificate.
+      This file may either contain both private key and certificate or you may
+      specify --cert-key separately.
+
+  --cert-key CERT_KEY
+      The private key to use with SSL. Only needed if --cert is given and the
+      certificate file does not contain the private key.
+
+  --cert-key-pass CERT_KEY_PASS
+      The passphrase to be used to with the given private key. Only needed if --cert-key
+      is given and the key file requires a passphrase.
+      If not provided, you’ll be prompted interactively.
+
+
+Troubleshooting:
+
+  --ignore-stdin, -I
+      Do not attempt to read stdin
+
+  --help
+      Show this help message and exit.
+
+  --manual
+      Show the full manual.
+
+  --version
+      Show version and exit.
+
+  --traceback
+      Prints the exception traceback should one occur.
+
+  --default-scheme DEFAULT_SCHEME
+      The default scheme to use if not specified in the URL.
+
+  --debug
+      Prints the exception traceback should one occur, as well as other
+      information useful for debugging HTTPie itself and for reporting bugs.
+
+
+For every --OPTION there is also a --no-OPTION that reverts OPTION
+to its default value.
+
+Suggestions and bug reports are greatly appreciated:
+    https://github.com/httpie/httpie/issues
+$
+```
+
+
+```bash
 $ https httpie.io/hello
+
+$ https -v httpie.io/hello
+GET /hello HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpie.io
+User-Agent: HTTPie/3.2.1
+
+
+
+HTTP/1.1 200 OK
+Age: 0
+Cache-Control: public, max-age=0, must-revalidate
+Connection: keep-alive
+Content-Length: 264
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Dec 2023 06:40:35 GMT
+Etag: "fcegchauwd78"
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+X-Matched-Path: /api/hello
+X-Vercel-Cache: MISS
+X-Vercel-Id: iad1::iad1::ljnxz-1701412834990-84e83a66708a
+
+{
+    "ahoy": [
+        "Hello, World! 👋 Thank you for trying out HTTPie 🥳",
+        "We hope this will become a friendship."
+    ],
+    "links": {
+        "discord": "https://httpie.io/discord",
+        "github": "https://github.com/httpie",
+        "homepage": "https://httpie.io",
+        "twitter": "https://twitter.com/httpie"
+    }
+}
+
+
+$
+
+$ https --all --print=BHbh httpie.io/hello
+GET /hello HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpie.io
+User-Agent: HTTPie/3.2.1
+
+
+
+HTTP/1.1 200 OK
+Age: 0
+Cache-Control: public, max-age=0, must-revalidate
+Connection: keep-alive
+Content-Length: 264
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Dec 2023 06:41:37 GMT
+Etag: "fcegchauwd78"
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+X-Matched-Path: /api/hello
+X-Vercel-Cache: MISS
+X-Vercel-Id: iad1::iad1::85tqb-1701412897676-8d86bfcf51ce
+
+{
+    "ahoy": [
+        "Hello, World! 👋 Thank you for trying out HTTPie 🥳",
+        "We hope this will become a friendship."
+    ],
+    "links": {
+        "discord": "https://httpie.io/discord",
+        "github": "https://github.com/httpie",
+        "homepage": "https://httpie.io",
+        "twitter": "https://twitter.com/httpie"
+    }
+}
+
+
+$
+$ https --all --print=BHbhm httpie.io/hello
+GET /hello HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: httpie.io
+User-Agent: HTTPie/3.2.1
+
+
+
+HTTP/1.1 200 OK
+Age: 0
+Cache-Control: public, max-age=0, must-revalidate
+Connection: keep-alive
+Content-Length: 264
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Dec 2023 06:42:26 GMT
+Etag: "fcegchauwd78"
+Server: Vercel
+Strict-Transport-Security: max-age=63072000
+X-Matched-Path: /api/hello
+X-Vercel-Cache: MISS
+X-Vercel-Id: iad1::iad1::8t94w-1701412945928-4c59e2c23af6
+
+{
+    "ahoy": [
+        "Hello, World! 👋 Thank you for trying out HTTPie 🥳",
+        "We hope this will become a friendship."
+    ],
+    "links": {
+        "discord": "https://httpie.io/discord",
+        "github": "https://github.com/httpie",
+        "homepage": "https://httpie.io",
+        "twitter": "https://twitter.com/httpie"
+    }
+}
+
+
+Elapsed time: 0.1253227297s
+
+$
 ```
 
 Synopsis:
@@ -304,13 +1060,135 @@ See also `http --help` (and for systems where man pages are available, you can u
 Custom [HTTP method](#http-method), [HTTP headers](#http-headers) and [JSON](#json) data:
 
 ```bash
-$ http PUT pie.dev/put X-API-Token:123 name=John
+':'  HTTP headers:
+'==' URL parameters to be appended to the request URI:
+'='  Data fields to be serialized into a JSON object (with --json, -j) or form data (with --form, -f):
+
+$ http --all --print=BHbhm PUT pie.dev/put X-API-Token:123 name=John
+PUT /put HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 16
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+X-API-Token: 123
+
+{
+    "name": "John"
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e95c299d9a1845-EWR
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 06:44:09 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=mTm%2FS9y8W%2FlRQBEkMQ44r1nM5O2jOkKeNmWhwDNddUkDnIZyM2n4SvYZ7YfE%2F3k8mIpSVCcK4olkDGPF4ZMixKkH2fHnv2nHKX%2B2%2B17fASDXuTcSJwf%2BVhbY"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "data": "{\"name\": \"John\"}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "68.183.31.146",
+        "Cf-Ipcountry": "US",
+        "Cf-Ray": "82e95c299d9a1845-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "16",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.1",
+        "X-Api-Token": "123"
+    },
+    "json": {
+        "name": "John"
+    },
+    "origin": "68.183.31.146",
+    "url": "http://pie.dev/put"
+}
+
+
+Elapsed time: 0.1449766447s
+
+$
+
 ```
 
 Submitting [forms](#forms):
 
 ```bash
-$ http -f POST pie.dev/post hello=World
+$ http --all --print=BHbhm -f POST pie.dev/post hello=World
+POST /post HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 11
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+
+hello=World
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e95ea53e35424b-EWR
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 06:45:51 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=O%2FQpOZP3lOhJR%2BFVfv5Xi8dId%2BbmGVPDbyFOVHGdfZoapnDsO80T1Ql7jbIIxD8nLhhyk61msH050ckrvBjo2Uewe%2Byj5r0VvNfMatQcQbWK8QEU7rx1tG7n"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "data": "",
+    "files": {},
+    "form": {
+        "hello": "World"
+    },
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "68.183.31.146",
+        "Cf-Ipcountry": "US",
+        "Cf-Ray": "82e95ea53e35424b-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "11",
+        "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.1"
+    },
+    "json": null,
+    "origin": "68.183.31.146",
+    "url": "http://pie.dev/post"
+}
+
+
+Elapsed time: 0.3983714739s
+
+$
 ```
 
 See the request that is being sent using one of the [output options](#output-options):
@@ -322,58 +1200,445 @@ $ http -v pie.dev/get
 Build and print a request without sending it using [offline mode](#offline-mode):
 
 ```bash
-$ http --offline pie.dev/post hello=offline
+$ http --all --print=BHbhm --offline pie.dev/post hello=offline
+POST /post HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 20
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+
+{
+    "hello": "offline"
+}
+
+
+$
 ```
 
-Use [GitHub API](https://developer.github.com/v3/issues/comments/#create-a-comment) to post a comment on an [issue](https://github.com/httpie/httpie/issues/83) with [authentication](#authentication):
+Use [GitHub API](https://developer.github.com/v3/issues/comments/#create-a-comment) to post a comment on an [issue](https://github.com/httpie/httpie/issues/83) with [authentication 验证](#authentication):
 
 ```bash
-$ http -a USERNAME POST https://api.github.com/repos/httpie/httpie/issues/83/comments body='HTTPie is awesome! :heart:'
+$ http --all --print=BHbhm -a lanzhiwang POST https://api.github.com/repos/httpie/httpie/issues/83/comments body='HTTPie is awesome! :heart:'
+http: password for lanzhiwang@api.github.com::
+POST /repos/httpie/httpie/issues/83/comments HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Authorization: Basic bGFuemhpd2FuZzpodXpoaTU2NzIzM2h1emhp
+Connection: keep-alive
+Content-Length: 38
+Content-Type: application/json
+Host: api.github.com
+User-Agent: HTTPie/3.2.2
+
+{
+    "body": "HTTPie is awesome! :heart:"
+}
+
+
+HTTP/1.1 307 Temporary Redirect
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset
+Content-Length: 215
+Content-Security-Policy: default-src 'none'
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Dec 2023 06:50:18 GMT
+Location: https://api.github.com/repositories/3544424/issues/83/comments
+Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+Server: GitHub.com
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+Vary: Accept-Encoding, Accept, X-Requested-With
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-GitHub-Media-Type: github.v3
+X-GitHub-Request-Id: 1843:26B296:609145:674DE8:65698229
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1701417018
+X-RateLimit-Resource: core
+X-RateLimit-Used: 1
+X-XSS-Protection: 0
+x-github-api-version-selected: 2022-11-28
+
+{
+    "documentation_url": "https://docs.github.com/rest/guides/best-practices-for-using-the-rest-api#follow-redirects",
+    "message": "Moved Permanently",
+    "url": "https://api.github.com/repositories/3544424/issues/83/comments"
+}
+
+
+Elapsed time: 0.642624265s
+
+$
 ```
 
 Upload a file using [redirected input](#redirected-input):
 
 ```bash
-$ http pie.dev/post < files/data.json
+$ cat files/data.json
+{
+    "httpie": {
+        "says": "Hello, World!"
+    }
+}
+
+$ http --all --print=BHbhm pie.dev/post < files/data.json
+POST /post HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 58
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+
+{
+    "httpie": {
+        "says": "Hello, World!"
+    }
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e969d05b4032d0-EWR
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 06:53:29 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=O4OBSsw5vdmcE%2Boc6Mov28nWku%2FJzGN%2BvcXWn7J%2FYUzVplnnXz%2Fpxk7tMDlUknzwcHt4Q842EaOxd1JffNQP1ERgAFTg%2BG7LCCbcr4IMNgwb98xqjq7jwo1R"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "data": "{\n    \"httpie\": {\n        \"says\": \"Hello, World!\"\n    }\n}\n",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "68.183.31.146",
+        "Cf-Ipcountry": "US",
+        "Cf-Ray": "82e969d05b4032d0-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "58",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.1"
+    },
+    "json": {
+        "httpie": {
+            "says": "Hello, World!"
+        }
+    },
+    "origin": "68.183.31.146",
+    "url": "http://pie.dev/post"
+}
+
+
+Elapsed time: 0.1322862893s
+
+$
+
 ```
 
 Download a file and save it via [redirected output](#redirected-output):
 
 ```bash
-$ http pie.dev/image/png > image.png
+$ ls -al
+total 16
+drwx------ 1 termible termible 104 May 16  2022 .
+drwxr-xr-x 1 root     root      22 May 16  2022 ..
+-rw-r--r-- 1 termible termible  18 Jan 26  2021 .bash_logout
+-rw-r--r-- 1 termible termible 141 Jan 26  2021 .bash_profile
+-rw-r--r-- 1 termible termible 492 Jan 26  2021 .bashrc
+drwxr-xr-x 1 termible termible  20 Jan 23  2022 .config
+-rw-r--r-- 1 termible termible 176 Apr 17  2020 README
+drwxr-xr-x 1 termible termible  69 Apr 16  2020 files
+$
+$ http --all --print=BHbhm pie.dev/image/png > image.png
+
+$ ls -al
+total 28
+drwx------ 1 termible termible   38 Dec  1 06:55 .
+drwxr-xr-x 1 root     root       22 May 16  2022 ..
+-rw-r--r-- 1 termible termible   18 Jan 26  2021 .bash_logout
+-rw-r--r-- 1 termible termible  141 Jan 26  2021 .bash_profile
+-rw-r--r-- 1 termible termible  492 Jan 26  2021 .bashrc
+drwxr-xr-x 1 termible termible   20 Jan 23  2022 .config
+-rw-r--r-- 1 termible termible  176 Apr 17  2020 README
+drwxr-xr-x 1 termible termible   69 Apr 16  2020 files
+-rw-rw-r-- 1 termible termible 8874 Dec  1 06:55 image.png
+$
 ```
 
 Download a file `wget` style:
 
 ```bash
-$ http --download pie.dev/image/png
+$ ls -al
+total 16
+drwx------ 1 termible termible 104 May 16  2022 .
+drwxr-xr-x 1 root     root      22 May 16  2022 ..
+-rw-r--r-- 1 termible termible  18 Jan 26  2021 .bash_logout
+-rw-r--r-- 1 termible termible 141 Jan 26  2021 .bash_profile
+-rw-r--r-- 1 termible termible 492 Jan 26  2021 .bashrc
+drwxr-xr-x 1 termible termible  20 Jan 23  2022 .config
+-rw-r--r-- 1 termible termible 176 Apr 17  2020 README
+drwxr-xr-x 1 termible termible  69 Apr 16  2020 files
+
+$ http --all --print=BHbhm --download pie.dev/image/png
+GET /image/png HTTP/1.1
+Accept: */*
+Accept-Encoding: identity
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e97004fe4642ea-EWR
+Connection: keep-alive
+Content-Length: 8090
+Content-Type: image/png
+Date: Fri, 01 Dec 2023 06:57:43 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=gARN4RWzUd%2BtlMn7ZmuoBLlaZJeN7anNdZc4IXKwFRW6oZHJqfOF4FAJuN6LnDHSyR4cdWb6DoWQoXHvIrOx4OrQxMobNRiTG%2FeIMnla7oHdfkCFAZwMn%2Fve"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+alt-svc: h3=":443"; ma=86400
+
+Elapsed time: 0.1371279518s
+
+Downloading to png.png
+Done. 8.1 kB in 00:0.05435 (148.9 kB/s)
+
+$ ls -al
+total 24
+drwx------ 1 termible termible   36 Dec  1 06:57 .
+drwxr-xr-x 1 root     root       22 May 16  2022 ..
+-rw-r--r-- 1 termible termible   18 Jan 26  2021 .bash_logout
+-rw-r--r-- 1 termible termible  141 Jan 26  2021 .bash_profile
+-rw-r--r-- 1 termible termible  492 Jan 26  2021 .bashrc
+drwxr-xr-x 1 termible termible   20 Jan 23  2022 .config
+-rw-r--r-- 1 termible termible  176 Apr 17  2020 README
+drwxr-xr-x 1 termible termible   69 Apr 16  2020 files
+-rw-rw-r-- 1 termible termible 8090 Dec  1 06:57 png.png
+$
 ```
 
 Use named [sessions](#sessions) to make certain aspects of the communication persistent between requests to the same host:
+使用命名会话使同一主机的请求之间的通信的某些方面保持不变：
 
 ```bash
 $ http --session=logged-in -a username:password pie.dev/get API-Key:123
+
+$ http --all --print=BHbhm --session=logged-in -a lanzhiwang:123456 pie.dev/get API-Key:123
+GET /get HTTP/1.1
+API-Key: 123
+Accept: */*
+Accept-Encoding: gzip, deflate
+Authorization: Basic bGFuemhpd2FuZzoxMjM0NTY=
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e974f4883deb7b-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:01:05 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=xCeLjM0PnAvGJEQiE8iD7QwJ3SHtZtdjlazLH6wvRbQZggBgxgD%2F9guDCebRaWR0is30j1njxjDOAA7nCpzHHgyV%2BhVorFFi5wmxMKB3NXJRKMkQk83f6Auv"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Api-Key": "123",
+        "Authorization": "Basic bGFuemhpd2FuZzoxMjM0NTY=",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e974f4883deb7b-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2"
+    },
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/get"
+}
+
+
+Elapsed time: 1.86110363s
+
+$
+
+
 ```
 
 ```bash
-$ http --session=logged-in pie.dev/headers
+$ http --all --print=BHbhm --session=logged-in pie.dev/headers
+GET /headers HTTP/1.1
+API-Key: 123
+Accept: */*
+Accept-Encoding: gzip, deflate
+Authorization: Basic bGFuemhpd2FuZzoxMjM0NTY=
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e976cf6db7c3af-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:02:21 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2F2C3hMt0glayVL666X%2BdA1Y%2FMWU%2B0IhiUkNDxhK6lL6NRyMsJPYYJSS1l%2FrZEUwxgdyD1F5MiVaayR45m708tnH%2BqayK4XN2kXeT2giTz5WI7M4fWe8sTWb5"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Api-Key": "123",
+        "Authorization": "Basic bGFuemhpd2FuZzoxMjM0NTY=",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e976cf6db7c3af-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2"
+    }
+}
+
+
+Elapsed time: 0.610158736s
+
+$
+
 ```
 
 Set a custom `Host` header to work around missing DNS records:
+设置自定义主机标头以解决丢失的 DNS 记录：
 
 ```bash
-$ http localhost:8000 Host:example.com
+$ http --all --print=BHbhm localhost:8000 Host:example.com
+GET / HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: example.com
+User-Agent: HTTPie/3.2.1
+
+
+http: error: ConnectionError: HTTPConnectionPool(host='localhost', port=8000):
+ Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.conn
+ection.HTTPConnection object at 0x7ffbe1a32b20>: Failed to establish a new con
+nection: [Errno 111] Connection refused')) while doing a GET request to URL: h
+ttp://localhost:8000/
+
+
+$
+
 ```
 
 ## HTTP method
 
 The name of the HTTP method comes right before the URL argument:
+HTTP 方法的名称位于 URL 参数之前：
 
 ```bash
-$ http DELETE pie.dev/delete
+$ http --all --print=BHbhm DELETE pie.dev/delete
+DELETE /delete HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 0
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e97d5a29b316d8-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:06:49 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=qZ2GVRU2kk8M9KDSY6SESMFeX3TQvbcPA4qSoInGYCvWebG7uO8oAxgSTxk3r8SQAc%2B0ZM9Ok55idLdyZcvBZrlSSY7NkUexrQIeuaD9BfqUbFQMHjcGjzzo"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "data": "",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e97d5a29b316d8-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "0",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2"
+    },
+    "json": null,
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/delete"
+}
+
+
+Elapsed time: 0.611610638s
+
+$
+
 ```
 
 Which looks similar to the actual `Request-Line` that is sent:
+这看起来与发送的实际请求行类似：
 
 ```http
 DELETE /delete HTTP/1.1
@@ -382,29 +1647,174 @@ DELETE /delete HTTP/1.1
 In addition to the standard methods (`GET`, `POST`, `HEAD`, `PUT`, `PATCH`, `DELETE`, etc.), you can use custom method names, for example:
 
 ```bash
-$ http AHOY pie.dev/post
+$ http --all --print=BHbhm AHOY pie.dev/post
+AHOY /post HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 0
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 405 Method Not Allowed
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+Allow: OPTIONS, POST
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e980aef9f1c4b6-SEA
+Connection: keep-alive
+Content-Type: text/html
+Date: Fri, 01 Dec 2023 07:09:05 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=db%2FUtheNQusgi5iwccuRxeZDLoP9rl7x%2Fwlcqht2BkAmulfMTY6nr6tYYDOrK%2FU5j%2F%2BsJP0IrUzwELI9sd7GdC5Blx69Tai2Yeaa7w3qO2YIcus0XWZTGftc"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>405 Method Not Allowed</title>
+<h1>Method Not Allowed</h1>
+<p>The method is not allowed for the requested URL.</p>
+
+
+Elapsed time: 0.829625737s
+
+$
 ```
 
 There are no restrictions regarding which request methods can include a body. You can send an empty `POST` request:
+对于哪些请求方法可以包含主体没有限制。 您可以发送一个空的 POST 请求：
 
 ```bash
-$ http POST pie.dev/post
+$ http --all --print=BHbhm POST pie.dev/post
+POST /post HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 0
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e983476a5cc3bc-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:10:52 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=J4ZZ8n54aiO0qvKE53LR0ZbW1IGSGv%2Fq%2FG8%2BD7CIIR3trsqmnz5tw9xiXfGFFBiOM%2BuUNTImhQWNiz7CA%2FRrjDNidEhBQ4FhYW8Fh0uUWZU7HlrxmRl6TOBe"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "data": "",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e983476a5cc3bc-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "0",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2"
+    },
+    "json": null,
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/post"
+}
+
+
+Elapsed time: 0.585261883s
+
+$
 ```
 
 You can also make `GET` requests containing a body:
 
 ```bash
-$ http GET pie.dev/get hello=world
+$ http --all --print=BHbhm GET pie.dev/get hello=world
+GET /get HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 18
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+{
+    "hello": "world"
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e985aebe55ebfa-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:12:30 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=WhETfPihbLb22lQaa5I3EZw74LiuBEMiysq4V4rRB02iRxJw8%2B7D425Uvr508miJ6fJRN%2FqFesnV4sXAtVuRiXrju5OeoVWdNkBd%2BsOVa3FVNo018jqe0GCN"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "headers": {
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e985aebe55ebfa-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "18",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2"
+    },
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/get"
+}
+
+
+Elapsed time: 0.821127001s
+
+$
 ```
 
 ### Optional `GET` and `POST`
 
 The `METHOD` argument is optional, and when you don’t specify it, HTTPie defaults to:
+METHOD 参数是可选的，当您不指定它时，HTTPie 默认为：
 
 - `GET` for requests without body
+  GET 获取没有正文的请求
+
 - `POST` for requests with body
+  POST 带正文的请求
 
 Here we don’t specify any request data, so both commands will send the same `GET` request:
+这里我们没有指定任何请求数据，因此两个命令都会发送相同的 GET 请求：
 
 ```bash
 $ http GET pie.dev/get
@@ -443,6 +1853,7 @@ $ https example.org
 ```
 
 When you paste a URL into the terminal, you can even keep the `://` bit in the URL argument to quickly convert the URL into an HTTPie call just by adding a space after the protocol name.
+当您将 URL 粘贴到终端时，您甚至可以保留 URL 参数中的 :// 位，只需在协议名称后添加空格即可快速将 URL 转换为 HTTPie 调用。
 
 ```bash
 $ https ://example.org
@@ -457,11 +1868,186 @@ $ http ://example.org
 ### Querystring parameters
 
 If you find yourself manually constructing URLs with querystring parameters on the terminal, you may appreciate the `param==value` syntax for appending URL parameters.
+如果您发现自己在终端上使用查询字符串参数手动构建 URL，您可能会喜欢用于附加 URL 参数的 param==value 语法。
 
 With that, you don’t have to worry about escaping the `&` separators for your shell. Additionally, any special characters in the parameter name or value get automatically URL-escaped (as opposed to the parameters specified in the full URL, which HTTPie doesn’t modify).
+这样，您就不必担心 shell 中的 & 分隔符会被转义。 此外，参数名称或值中的任何特殊字符都会自动进行 URL 转义（与完整 URL 中指定的参数相反，HTTPie 不会修改完整 URL）。
 
 ```bash
-$ http https://api.github.com/search/repositories q==httpie per_page==1
+$ http --all --print=BHbhm https://api.github.com/search/repositories q==httpie per_page==1
+GET /search/repositories?q=httpie&per_page=1 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: api.github.com
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Access-Control-Expose-Headers: ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset
+Cache-Control: no-cache
+Content-Encoding: gzip
+Content-Security-Policy: default-src 'none'
+Content-Type: application/json; charset=utf-8
+Date: Fri, 01 Dec 2023 07:22:41 GMT
+Link: <https://api.github.com/search/repositories?q=httpie&per_page=1&page=2>; rel="next", <https://api.github.com/search/repositories?q=httpie&per_page=1&page=417>; rel="last"
+Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin
+Server: GitHub.com
+Strict-Transport-Security: max-age=31536000; includeSubdomains; preload
+Transfer-Encoding: chunked
+Vary: Accept, Accept-Encoding, Accept, X-Requested-With
+X-Content-Type-Options: nosniff
+X-Frame-Options: deny
+X-GitHub-Media-Type: github.v3; format=json
+X-GitHub-Request-Id: 1970:25E735:64F5E8:6BE8D7:656989C1
+X-RateLimit-Limit: 10
+X-RateLimit-Remaining: 9
+X-RateLimit-Reset: 1701415421
+X-RateLimit-Resource: search
+X-RateLimit-Used: 1
+X-XSS-Protection: 0
+x-github-api-version-selected: 2022-11-28
+
+{
+    "incomplete_results": false,
+    "items": [
+        {
+            "allow_forking": true,
+            "archive_url": "https://api.github.com/repos/httpie/http-prompt/{archive_format}{/ref}",
+            "archived": false,
+            "assignees_url": "https://api.github.com/repos/httpie/http-prompt/assignees{/user}",
+            "blobs_url": "https://api.github.com/repos/httpie/http-prompt/git/blobs{/sha}",
+            "branches_url": "https://api.github.com/repos/httpie/http-prompt/branches{/branch}",
+            "clone_url": "https://github.com/httpie/http-prompt.git",
+            "collaborators_url": "https://api.github.com/repos/httpie/http-prompt/collaborators{/collaborator}",
+            "comments_url": "https://api.github.com/repos/httpie/http-prompt/comments{/number}",
+            "commits_url": "https://api.github.com/repos/httpie/http-prompt/commits{/sha}",
+            "compare_url": "https://api.github.com/repos/httpie/http-prompt/compare/{base}...{head}",
+            "contents_url": "https://api.github.com/repos/httpie/http-prompt/contents/{+path}",
+            "contributors_url": "https://api.github.com/repos/httpie/http-prompt/contributors",
+            "created_at": "2016-04-06T07:24:35Z",
+            "default_branch": "master",
+            "deployments_url": "https://api.github.com/repos/httpie/http-prompt/deployments",
+            "description": "An interactive command-line HTTP and API testing client built on top of HTTPie featuring autocomplete, syntax highlighting, and more. https://twitter.com/httpie",
+            "disabled": false,
+            "downloads_url": "https://api.github.com/repos/httpie/http-prompt/downloads",
+            "events_url": "https://api.github.com/repos/httpie/http-prompt/events",
+            "fork": false,
+            "forks": 363,
+            "forks_count": 363,
+            "forks_url": "https://api.github.com/repos/httpie/http-prompt/forks",
+            "full_name": "httpie/http-prompt",
+            "git_commits_url": "https://api.github.com/repos/httpie/http-prompt/git/commits{/sha}",
+            "git_refs_url": "https://api.github.com/repos/httpie/http-prompt/git/refs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/httpie/http-prompt/git/tags{/sha}",
+            "git_url": "git://github.com/httpie/http-prompt.git",
+            "has_discussions": false,
+            "has_downloads": true,
+            "has_issues": true,
+            "has_pages": true,
+            "has_projects": true,
+            "has_wiki": true,
+            "homepage": "https://http-prompt.com",
+            "hooks_url": "https://api.github.com/repos/httpie/http-prompt/hooks",
+            "html_url": "https://github.com/httpie/http-prompt",
+            "id": 55584626,
+            "is_template": false,
+            "issue_comment_url": "https://api.github.com/repos/httpie/http-prompt/issues/comments{/number}",
+            "issue_events_url": "https://api.github.com/repos/httpie/http-prompt/issues/events{/number}",
+            "issues_url": "https://api.github.com/repos/httpie/http-prompt/issues{/number}",
+            "keys_url": "https://api.github.com/repos/httpie/http-prompt/keys{/key_id}",
+            "labels_url": "https://api.github.com/repos/httpie/http-prompt/labels{/name}",
+            "language": "Python",
+            "languages_url": "https://api.github.com/repos/httpie/http-prompt/languages",
+            "license": {
+                "key": "mit",
+                "name": "MIT License",
+                "node_id": "MDc6TGljZW5zZTEz",
+                "spdx_id": "MIT",
+                "url": "https://api.github.com/licenses/mit"
+            },
+            "merges_url": "https://api.github.com/repos/httpie/http-prompt/merges",
+            "milestones_url": "https://api.github.com/repos/httpie/http-prompt/milestones{/number}",
+            "mirror_url": null,
+            "name": "http-prompt",
+            "node_id": "MDEwOlJlcG9zaXRvcnk1NTU4NDYyNg==",
+            "notifications_url": "https://api.github.com/repos/httpie/http-prompt/notifications{?since,all,participating}",
+            "open_issues": 54,
+            "open_issues_count": 54,
+            "owner": {
+                "avatar_url": "https://avatars.githubusercontent.com/u/24454777?v=4",
+                "events_url": "https://api.github.com/users/httpie/events{/privacy}",
+                "followers_url": "https://api.github.com/users/httpie/followers",
+                "following_url": "https://api.github.com/users/httpie/following{/other_user}",
+                "gists_url": "https://api.github.com/users/httpie/gists{/gist_id}",
+                "gravatar_id": "",
+                "html_url": "https://github.com/httpie",
+                "id": 24454777,
+                "login": "httpie",
+                "node_id": "MDEyOk9yZ2FuaXphdGlvbjI0NDU0Nzc3",
+                "organizations_url": "https://api.github.com/users/httpie/orgs",
+                "received_events_url": "https://api.github.com/users/httpie/received_events",
+                "repos_url": "https://api.github.com/users/httpie/repos",
+                "site_admin": false,
+                "starred_url": "https://api.github.com/users/httpie/starred{/owner}{/repo}",
+                "subscriptions_url": "https://api.github.com/users/httpie/subscriptions",
+                "type": "Organization",
+                "url": "https://api.github.com/users/httpie"
+            },
+            "private": false,
+            "pulls_url": "https://api.github.com/repos/httpie/http-prompt/pulls{/number}",
+            "pushed_at": "2023-04-24T14:46:59Z",
+            "releases_url": "https://api.github.com/repos/httpie/http-prompt/releases{/id}",
+            "score": 1.0,
+            "size": 736,
+            "ssh_url": "git@github.com:httpie/http-prompt.git",
+            "stargazers_count": 8822,
+            "stargazers_url": "https://api.github.com/repos/httpie/http-prompt/stargazers",
+            "statuses_url": "https://api.github.com/repos/httpie/http-prompt/statuses/{sha}",
+            "subscribers_url": "https://api.github.com/repos/httpie/http-prompt/subscribers",
+            "subscription_url": "https://api.github.com/repos/httpie/http-prompt/subscription",
+            "svn_url": "https://github.com/httpie/http-prompt",
+            "tags_url": "https://api.github.com/repos/httpie/http-prompt/tags",
+            "teams_url": "https://api.github.com/repos/httpie/http-prompt/teams",
+            "topics": [
+                "api",
+                "api-cli",
+                "api-testing",
+                "autocomplete",
+                "cli",
+                "developer-tools",
+                "development",
+                "http",
+                "http-client",
+                "httpie",
+                "json",
+                "python",
+                "rest-api",
+                "shell",
+                "syntax-highlighting",
+                "terminal",
+                "web-development"
+            ],
+            "trees_url": "https://api.github.com/repos/httpie/http-prompt/git/trees{/sha}",
+            "updated_at": "2023-11-26T13:20:26Z",
+            "url": "https://api.github.com/repos/httpie/http-prompt",
+            "visibility": "public",
+            "watchers": 8822,
+            "watchers_count": 8822,
+            "web_commit_signoff_required": false
+        }
+    ],
+    "total_count": 417
+}
+
+
+Elapsed time: 0.701343901s
+
+$
+
 ```
 
 ```http
@@ -471,7 +2057,61 @@ GET /search/repositories?q=httpie&per_page=1 HTTP/1.1
 You can even retrieve the `value` from a file by using the `param==@file` syntax. This would also effectively strip the newlines from the end. See [file based separators](#file-based-separators) for more examples.
 
 ```bash
-$ http pie.dev/get text==@files/text.txt
+$ http --all --print=BHbhm pie.dev/get text==@files/text.txt
+
+$ cat files/text.txt
+Hello, World!
+
+$ http --all --print=BHbhm pie.dev/get text==@files/text.txt
+GET /get?text=Hello%2C+World%21 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e997a7ff95c448-EWR
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:24:47 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=n6OLGuzwEKbyJ7chVGOaiZubVXyY8sJawMeytqNm%2F9KYuXD4i9nd%2BcDci6Em7NF6xTkzdSO%2BPxEbkDxmpeQso7xLEwCcEZrxJI%2BecPNjGFXCIwqZjGK8IV7K"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {
+        "text": "Hello, World!"
+    },
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "68.183.31.146",
+        "Cf-Ipcountry": "US",
+        "Cf-Ray": "82e997a7ff95c448-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.1"
+    },
+    "origin": "68.183.31.146",
+    "url": "http://pie.dev/get?text=Hello%2C+World!"
+}
+
+
+Elapsed time: 0.4141824986s
+
+$
+
 ```
 
 ### URL shortcuts for `localhost`
@@ -479,6 +2119,7 @@ $ http pie.dev/get text==@files/text.txt
 Additionally, curl-like shorthand for localhost is supported.
 This means that, for example, `:3000` would expand to `http://localhost:3000`
 If the port is omitted, then port 80 is assumed.
+此外，还支持类似curl 的localhost 简写形式。 这意味着，例如， :3000 将扩展为 http://localhost:3000 如果省略端口，则假定端口 80。
 
 ```bash
 $ http :/foo
@@ -531,9 +2172,81 @@ $ http-unix %2Fvar%2Frun%2Fdocker.sock/info
 ### `--path-as-is`
 
 The standard behavior of HTTP clients is to normalize the path portion of URLs by squashing dot segments as a typically filesystem would:
+HTTP 客户端的标准行为是通过压缩点段来标准化 URL 的路径部分，就像典型的文件系统一样：
 
 ```bash
 $ http -v example.org/./../../etc/password
+GET /etc/password HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: example.org
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 404 Not Found
+Age: 507652
+Cache-Control: max-age=604800
+Content-Encoding: gzip
+Content-Length: 648
+Content-Type: text/html; charset=UTF-8
+Date: Fri, 01 Dec 2023 07:31:58 GMT
+Expires: Fri, 08 Dec 2023 07:31:58 GMT
+Last-Modified: Sat, 25 Nov 2023 10:31:06 GMT
+Server: ECS (laa/7BA2)
+Vary: Accept-Encoding
+X-Cache: 404-HIT
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.</p>
+    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+
+
+$
 ```
 
 ```http
@@ -544,6 +2257,72 @@ The `--path-as-is` option allows you to disable this behavior:
 
 ```bash
 $ http --path-as-is -v example.org/./../../etc/password
+GET /./../../etc/password HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: example.org
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 404 Not Found
+Content-Encoding: gzip
+Content-Length: 648
+Content-Type: text/html; charset=UTF-8
+Date: Fri, 01 Dec 2023 07:33:30 GMT
+Server: ECS (nyb/1D1B)
+Vary: Accept-Encoding
+
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in illustrative examples in documents. You may use this
+    domain in literature without prior coordination or asking for permission.</p>
+    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+
+
+$
 ```
 
 ```http
@@ -562,11 +2341,214 @@ characters: `:` (headers), `=` (data field, e.g., JSON, form), `:=` (raw data fi
 `==` (query parameters), `@` (file upload).
 
 ```bash
-$ http PUT pie.dev/put \
+$ http --all --print=BHbhm PUT pie.dev/put \
     X-Date:today \                     # Header
     token==secret \                    # Query parameter
     name=John \                        # Data field
     age:=29                            # Raw JSON
+
+http --all --print=BHbhm PUT pie.dev/put X-Date:today token==secret name=John age:=29
+http --all --print=BHbhm -j PUT pie.dev/put X-Date:today token==secret name=John age:=29
+PUT /put?token=secret HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 27
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+X-Date: today
+
+{
+    "age": 29,
+    "name": "John"
+}
+
+http --all --print=BHbhm -f PUT pie.dev/put X-Date:today token==secret name=John age:=29
+PUT /put?token=secret HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 16
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+X-Date: today
+
+name=John&age=29
+
+http --all --print=BHbhm --multipart PUT pie.dev/put X-Date:today token==secret name=John age:=29
+PUT /put?token=secret HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 127
+Content-Type: multipart/form-data; boundary=e1f84937a13d4c788cb61e4f90647ec0
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+X-Date: today
+
+--e1f84937a13d4c788cb61e4f90647ec0
+Content-Disposition: form-data; name="name"
+
+John
+--e1f84937a13d4c788cb61e4f90647ec0--
+
+
+
+
+$ http --all --print=BHbhm PUT pie.dev/put X-Date:today token==secret name=John age:=29
+PUT /put?token=secret HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 27
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+X-Date: today
+
+{
+    "age": 29,
+    "name": "John"
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9ad0a8a96092f-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:39:22 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=QApdo0AJbXY1%2FCEt1yEfKPUSl8NJjo5oCnwIIAVbSwpwvj57oKV3HIGeTvszcfctC7KLSaGWh6825R2TbD6xIXuKFUpZ1Wgx1yRi0N74fqN0fPOBHuJ3B6FP"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {
+        "token": "secret"
+    },
+    "data": "{\"name\": \"John\", \"age\": 29}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e9ad0a8a96092f-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "27",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2",
+        "X-Date": "today"
+    },
+    "json": {
+        "age": 29,
+        "name": "John"
+    },
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/put?token=secret"
+}
+
+
+Elapsed time: 0.628821912s
+
+$
+
+$ http --all --print=BHbhm -j PUT pie.dev/put X-Date:today token==secret name=John age:=29 meals:='["ham","spam"]' pies:=[1,2,3]
+PUT /put?token=secret HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 72
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+X-Date: today
+
+{
+    "age": 29,
+    "meals": [
+        "ham",
+        "spam"
+    ],
+    "name": "John",
+    "pies": [
+        1,
+        2,
+        3
+    ]
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9bd289fe70885-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:50:22 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=zVRLGAOvogok2367I5nuk583LUca%2Fx0pJVLv05F0aJo2YHKQIPTMP3VnORRT1FJurseKSNxw4UX6%2BAT%2F%2F5XHBsn8T%2FaLNKBZH1XF0hiGt7LhXAz%2ForeBacJ%2F"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {
+        "token": "secret"
+    },
+    "data": "{\"name\": \"John\", \"age\": 29, \"meals\": [\"ham\", \"spam\"], \"pies\": [1, 2, 3]}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e9bd289fe70885-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "72",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2",
+        "X-Date": "today"
+    },
+    "json": {
+        "age": 29,
+        "meals": [
+            "ham",
+            "spam"
+        ],
+        "name": "John",
+        "pies": [
+            1,
+            2,
+            3
+        ]
+    },
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/put?token=secret"
+}
+
+
+Elapsed time: 0.63375678s
+
+$
+
 ```
 
 |                                                    Item Type | Description                                                                                                                                                                                                            |
@@ -585,6 +2567,7 @@ Note that the structured data fields aren’t the only way to specify request da
 Using file contents as values for specific fields is a very common use case, which can be achieved through adding the `@` suffix to
 the operators above. For example instead of using a static string as the value for some header, you can use `:@` operator
 to pass the desired value from a file.
+使用文件内容作为特定字段的值是一个非常常见的用例，可以通过在上面的运算符中添加 @ 后缀来实现。 例如，您可以使用 :@ 运算符从文件传递所需的值，而不是使用静态字符串作为某些标头的值。
 
 ```bash
 $ http POST pie.dev/post \
@@ -592,6 +2575,92 @@ $ http POST pie.dev/post \
     token==@files/text.txt             # Read a query parameter from a file
     name=@files/text.txt               # Read a data field’s value from a file
     bookmarks:=@files/data.json        # Embed a JSON object from a file
+
+
+$ cat files/text.txt
+Hello, World!
+
+$ cat files/data.json
+{
+    "httpie": {
+        "says": "Hello, World!"
+    }
+}
+$ http --all --print=BHbhm POST pie.dev/post X-Data:@files/text.txt token==@files/text.txt name=@files/text.txt bookmarks:=@files/data.json
+POST /post?token=Hello%2C+World%21 HTTP/1.1
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 79
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+X-Data: Hello, World!
+
+{
+    "bookmarks": {
+        "httpie": {
+            "says": "Hello, World!"
+        }
+    },
+    "name": "Hello, World!\n"
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9c5218937b9c5-EWR
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:55:49 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2B%2FiMHvIDvx6CdOioZ%2B68q%2BptcD4H4EdS1U%2FPomy62z7o5XbGkAtTpn8Fl33PeFKg4NXLGLyJGUwbQkD7McWHkYH9TN5s5Roxh18jpRbd1%2F9CLRLLf1J36jO3"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {
+        "token": "Hello, World!"
+    },
+    "data": "{\"name\": \"Hello, World!\\n\", \"bookmarks\": {\"httpie\": {\"says\": \"Hello, World!\"}}}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "68.183.31.146",
+        "Cf-Ipcountry": "US",
+        "Cf-Ray": "82e9c5218937b9c5-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "79",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.1",
+        "X-Data": "Hello, World!"
+    },
+    "json": {
+        "bookmarks": {
+            "httpie": {
+                "says": "Hello, World!"
+            }
+        },
+        "name": "Hello, World!\n"
+    },
+    "origin": "68.183.31.146",
+    "url": "http://pie.dev/post?token=Hello%2C+World!"
+}
+
+
+Elapsed time: 0.4215661667s
+
+$
+
 ```
 
 ### Escaping rules
@@ -603,7 +2672,69 @@ Often it is necessary to quote the values, e.g. `foo='bar baz'`.
 If any of the field names or headers starts with a minus (e.g. `-fieldname`), you need to place all such items after the special token `--` to prevent confusion with `--arguments`:
 
 ```bash
-$ http pie.dev/post -- -name-starting-with-dash=foo -Unusual-Header:bar
+$ http --all --print=BHbhm pie.dev/post -- -name-starting-with-dash=foo -Unusual-Header:bar
+POST /post HTTP/1.1
+-Unusual-Header: bar
+Accept: application/json, */*;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Content-Length: 35
+Content-Type: application/json
+Host: pie.dev
+User-Agent: HTTPie/3.2.1
+
+{
+    "-name-starting-with-dash": "foo"
+}
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9c7d82dd917f1-EWR
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 07:57:40 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=VCDmjeRoOLwdsNs4chhTnjhOoXjyXnzHjOVj%2B3XaIoCCRMB7%2F6%2B8uMYeqELdsBZI3fsnlUssV3JBkjNmfMM0F%2BQDRITQ5dWFNT1STHsTCMDNMT0Sn%2BxIsbBA"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "data": "{\"-name-starting-with-dash\": \"foo\"}",
+    "files": {},
+    "form": {},
+    "headers": {
+        "-Unusual-Header": "bar",
+        "Accept": "application/json, */*;q=0.5",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "68.183.31.146",
+        "Cf-Ipcountry": "US",
+        "Cf-Ray": "82e9c7d82dd917f1-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Content-Length": "35",
+        "Content-Type": "application/json",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.1"
+    },
+    "json": {
+        "-name-starting-with-dash": "foo"
+    },
+    "origin": "68.183.31.146",
+    "url": "http://pie.dev/post"
+}
+
+
+Elapsed time: 0.1393949128s
+
+$
+
 ```
 
 ```http
@@ -657,6 +2788,7 @@ Additionally, HTTPie will try to detect JSON responses even when the `Content-Ty
 
 Non-string JSON fields use the `:=` separator, which allows you to embed arbitrary JSON data into the resulting JSON object.
 Additionally, text and raw JSON files can also be embedded into fields using `=@` and `:=@`:
+非字符串 JSON 字段使用 := 分隔符，它允许您将任意 JSON 数据嵌入到生成的 JSON 对象中。 此外，文本和原始 JSON 文件也可以使用 =@ 和 :=@ 嵌入到字段中：
 
 ```bash
 $ http PUT pie.dev/put \
@@ -696,6 +2828,8 @@ Host: pie.dev
 The `:=`/`:=@` syntax is JSON-specific. You can switch your request to `--form` or `--multipart`,
 and string, float, and number values will continue to be serialized (as string form values).
 Other JSON types, however, are not allowed with `--form` or `--multipart`.
+:=/:=@ 语法是 JSON 特定的。 您可以将请求切换为 --form 或 --multipart，字符串、浮点数和数字值将继续序列化（作为字符串形式值）。
+但是，其他 JSON 类型不允许与 --form 或 --multipart 一起使用。
 
 ### Nested JSON
 
@@ -1313,6 +3447,7 @@ If you often deal with cookies in your requests, then you’d appreciate
 the [sessions](#sessions) feature.
 
 ## Authentication
+认证
 
 The currently supported authentication schemes are Basic and Digest (see [auth plugins](#auth-plugins) for more). There are two flags that control authentication:
 
@@ -1408,7 +3543,40 @@ By default, HTTP redirects are not followed and only the first
 response is shown:
 
 ```bash
-$ http pie.dev/redirect/3
+$ http --all --print=BHbhm pie.dev/redirect/3
+GET /redirect/3 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 302 Found
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9e56cefb60927-SEA
+Connection: keep-alive
+Content-Type: text/html; charset=utf-8
+Date: Fri, 01 Dec 2023 08:17:52 GMT
+Location: /relative-redirect/2
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=yMIk8nMcrrchiagCc9CvqTjYFFiPvtiRM4dA1ctpnds6Wx4MbGRLu%2BF2EX%2BP3tHP3VDy%2FxzVnQGqrv1rIqOdQO2FHFHRXJqlnKPPPnCMLg7kG%2BiX0IyFvu%2FW"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to target URL: <a href="/relative-redirect/2">/relative-redirect/2</a>.  If not click the link.
+
+
+Elapsed time: 1.06563687s
+
+￥
 ```
 
 ### Follow `Location`
@@ -1417,7 +3585,143 @@ To instruct HTTPie to follow the `Location` header of `30x` responses
 and show the final response instead, use the `--follow, -F` option:
 
 ```bash
-$ http --follow pie.dev/redirect/3
+$ http --all --print=BHbhm --follow pie.dev/redirect/3
+GET /redirect/3 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 302 Found
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9e77da8ed3081-SEA
+Connection: keep-alive
+Content-Type: text/html; charset=utf-8
+Date: Fri, 01 Dec 2023 08:19:16 GMT
+Location: /relative-redirect/2
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=ZztB8O8Tg6%2Fd7iXIO3IhPyWmEIKQvzVRgtTYbJBovY72Fw6qEN2Xv%2B3jj%2FNnFuySwq%2F19Q06DBKa7W1v2xrXGCe%2FixLsDS140IzMQ4xjPSB1i3RXHgHK6lao"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<title>Redirecting...</title>
+<h1>Redirecting...</h1>
+<p>You should be redirected automatically to target URL: <a href="/relative-redirect/2">/relative-redirect/2</a>.  If not click the link.
+
+
+Elapsed time: 0.638054414s
+
+GET /relative-redirect/2 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 302 Found
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9e7802bb13081-SEA
+Connection: keep-alive
+Content-Type: text/html; charset=utf-8
+Date: Fri, 01 Dec 2023 08:19:17 GMT
+Location: /relative-redirect/1
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=SQuuHUXaixz5%2FYNWR6Nc6B6mVoYcmPVNL1zPewg1qy4sJRAQ%2FlxIHqCqWYV%2F55F2ouxXQM4xBgTxaddpkHUGEUgxhw%2FzjmG1iZ%2BvnxA%2BO2dMh6ZA%2FON5YAq9"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+
+
+
+Elapsed time: 0.363722041s
+
+GET /relative-redirect/1 HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 302 Found
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9e7827e2e3081-SEA
+Connection: keep-alive
+Content-Type: text/html; charset=utf-8
+Date: Fri, 01 Dec 2023 08:19:17 GMT
+Location: /get
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2BQUaBWx1Ffbj%2FM7mXcq44i8kAx0ohIJxi0kZOI%2BUjdoGcnN0bH3BjU1cAk%2BFSlg0lLuSbWAv2doiFBwnZBSDQCNXaRBc8dXpaMGJ5lKdNvHmM69e1WZalA8b"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+
+
+
+Elapsed time: 0.371262251s
+
+GET /get HTTP/1.1
+Accept: */*
+Accept-Encoding: gzip, deflate
+Connection: keep-alive
+Host: pie.dev
+User-Agent: HTTPie/3.2.2
+
+
+
+HTTP/1.1 200 OK
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: *
+CF-Cache-Status: DYNAMIC
+CF-RAY: 82e9e784c95a3081-SEA
+Connection: keep-alive
+Content-Encoding: gzip
+Content-Type: application/json
+Date: Fri, 01 Dec 2023 08:19:18 GMT
+NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}
+Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=dLyM4e8CalIIWGJTrXmGMdBokWOQ1SrStK5jmqK5afvGCDefaxV%2FxU3aTLx0xeKCrlEOcUuciFjPpVbkLaarz6tUl855V%2BcfrJqZXZ3fuSVNaKGFg7AYOgKf"}],"group":"cf-nel","max_age":604800}
+Server: cloudflare
+Transfer-Encoding: chunked
+alt-svc: h3=":443"; ma=86400
+
+{
+    "args": {},
+    "headers": {
+        "Accept": "*/*",
+        "Accept-Encoding": "gzip",
+        "Cdn-Loop": "cloudflare",
+        "Cf-Connecting-Ip": "111.60.138.11",
+        "Cf-Ipcountry": "CN",
+        "Cf-Ray": "82e9e784c95a3081-FRA",
+        "Cf-Visitor": "{\"scheme\":\"http\"}",
+        "Connection": "Keep-Alive",
+        "Host": "pie.dev",
+        "User-Agent": "HTTPie/3.2.2"
+    },
+    "origin": "111.60.138.11",
+    "url": "http://pie.dev/get"
+}
+
+
+Elapsed time: 0.37406301s
+
+$
 ```
 
 With `307 Temporary Redirect` and `308 Permanent Redirect`, the method and the body of the original request
@@ -1445,7 +3749,7 @@ $ http --follow --all --max-redirects=2 pie.dev/redirect/3
 You can specify proxies to be used through the `--proxy` argument for each protocol (which is included in the value in case of redirects across protocols):
 
 ```bash
-$ http --proxy=http:http://10.10.1.10:3128 --proxy=https:https://10.10.1.10:1080 example.org
+$ http --all --print=BHbhm --proxy=http:http://10.10.1.10:3128 --proxy=https:https://10.10.1.10:1080 example.org
 ```
 
 With Basic authentication:
@@ -1479,8 +3783,10 @@ $ http --proxy=http:socks5://user:pass@host:port --proxy=https:socks5://user:pas
 ## HTTPS
 
 ### Server SSL certificate verification
+服务器 SSL 证书验证
 
 To skip the host’s SSL certificate verification, you can pass `--verify=no` (default is `yes`):
+要跳过主机的SSL证书验证，可以通过--verify=no（默认为yes）：
 
 ```bash
 $ http --verify=no https://pie.dev/get
@@ -1489,15 +3795,18 @@ $ http --verify=no https://pie.dev/get
 ### Custom CA bundle
 
 You can also use `--verify=<CA_BUNDLE_PATH>` to set a custom CA bundle path:
+您还可以使用 --verify=<CA_BUNDLE_PATH> 设置自定义 CA 捆绑包路径：
 
 ```bash
 $ http --verify=/ssl/custom_ca_bundle https://example.org
 ```
 
 ### Client side SSL certificate
+客户端 SSL 证书
 
 To use a client side certificate for the SSL communication, you can pass
 the path of the cert file with `--cert`:
+要使用客户端证书进行 SSL 通信，您可以使用 --cert 传递证书文件的路径：
 
 ```bash
 $ http --cert=client.pem https://example.org
